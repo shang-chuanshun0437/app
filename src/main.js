@@ -8,6 +8,7 @@ import 'mint-ui/lib/style.css'
 import '../static/css/mui.css'
 import '../static/css/icons-extra.css'
 import '../static/css/muihead.css'
+import "./assets/icon/iconfont.css"
 Vue.config.productionTip = false
 Vue.use(MintUI)
 /* eslint-disable no-new */

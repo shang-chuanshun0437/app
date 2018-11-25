@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '../views/Home'
 import OpenDoor from '../views/door/OpenDoor'
 import Doors from '../views/door/Doors'
+import My from '../views/my/My'
 
 Vue.use(Router)
 
@@ -26,6 +27,11 @@ export default new Router({
       path: '/openDoor',
       name: 'openDoor',
       component: OpenDoor
+    },
+    {
+      path: '/lock/my',
+      name: 'my',
+      component: My
     },
   ]
 })
