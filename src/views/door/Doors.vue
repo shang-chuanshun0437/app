@@ -1,76 +1,137 @@
 <template>
-  <div>
-    <mt-header fixed title="芝麻开门"></mt-header>
-
-    <ul class="mui-table-view mui-grid-view mui-grid-9">
-
-      <li v-for="door in doors" :key="door.id" class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-2" @click="open(door)">
-        <span class="mui-icon mui-icon-home"></span>
-        <div class="mui-media-body">{{door.deviceName}}</div>
-      </li>
-    </ul>
+  <div class="doors">
+    <mt-header title="设备列表" class="title">
+      <mt-button icon="back" slot="left" @click="back"></mt-button>
+      <mt-button slot="right" @click="addDevice()">添加设备</mt-button>
+    </mt-header>
+    <div class="door">
+      <div v-for="door in doors" :key="door.deviceNum" class="doorsInfo" @click="open(door)">
+        <img src="../../assets/logo.png" class="img">
+        <div class="deviceName">{{door.deviceName}}</div>
+        <div class="expiryDate">有效期：</div>
+        <span class="manage" v-if="door.expiryDate == 0">永久有效（管理员）</span>
+        <span class="normal" v-if="door.expiryDate != 0">{{door.expiryDate}}</span>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+  import * as API from "../../axios/api";
+  import * as URL from "../../axios/url";
+  import UserDB from "../../common/UserDB"
+
   export default {
     data() {
       return {
-        doors:[
-          {
-            id: 1,
-            deviceName: '软件谷人才公寓A',
-          },
-          {
-            id: 2,
-            deviceName: '软件谷人才公寓B',
-          },
-        ]
+        doors:[],
+        userPhone:"",
+        token: "",
       }
     },
     methods:{
       refresh(){
-
+        var param = {userPhone:this.userPhone,token: this.token};
+        //查询用户下的所有设备
+        API.POST(URL.DEVICE_ALL_LIST_URL, param)
+          .then(res => {
+            if (res.result.retCode === 0) {
+              if(res.count == 0){
+                this.doors = [];
+              }else {
+                this.doors = res.getAllUserDevices;
+              }
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          });
       },
       open(door){
-        this.$router.push({path:"/openDoor",query:{deviceName:door.deviceName,deviceNum:door.deviceNum,}});
+        this.$router.push({path:"/openDoor",query:{deviceName:door.deviceName,deviceNum:door.deviceNum,bluetoothMac: door.bluetoothMac
+        ,expiryDate: door.expiryDate, version: door.version}});
+      },
+      back(){
+        this.$router.go(-1);
+      },
+      addDevice(){
+        console.log("addDevice");
+        this.$router.push({path:"/device/bindDevice",query:{userPhone:this.userPhone,token: this.token}});
       },
     },
     created() {
-
+      var userDB = new UserDB();
+      userDB.getAll().then((obj) => {
+        if (obj != null) {
+          this.userPhone = obj.userPhone;
+          this.token = obj.token;
+          this.refresh();
+        }
+      })
     },
-    components: {
-    }
   }
 </script>
 
 <style scoped>
-  .slide1 a,
-  .slide1 img {
-    display: block;
+  .doors{
+    position: relative;
     width: 100%;
-    height: 250px;
+    height: 100%;
+    background-color: #f2f4f7;
   }
-  .mui-icon {
+  .title{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    background-color: #ff5053;
+    font-size: 18px;
+  }
+ .door{
+   position: absolute;
+   width: 100%;
+   top: 60px;
+ }
+  .doorsInfo{
+    position: relative;
+    width: 48%;
+    height: 160px;
+    background-color: white;
+    border-radius: 3%;
+    float: left;
+    margin: 1%;
+  }
+  .img {
+    position: relative;
+    left: 35%;
+    top: 15px;
     width: 50px;
     height: 50px;
   }
-  .mui-icon-home {
-    background-image: url(../../assets/logo.png);
-    background-repeat:round;
+  .deviceName {
+    position: relative;
+    top: 40px;
+    font-size: 15px;
+    text-align: center;
   }
-  .mui-icon-home:before,
-  .mui-icon-email:before,
-  .mui-icon-chatbubble:before,
-  .mui-icon-location:before,
-  .mui-icon-search:before,
-  .mui-icon-phone:before {
-    content: '';
+  .expiryDate {
+    position: relative;
+    top: 50px;
+    left: 5px;
+    font-size: 13px;
   }
-  .mui-grid-view.mui-grid-9 {
-    background-color: white;
+  .manage {
+    position: relative;
+    top: 28px;
+    left: 56px;
+    font-size: 10px;
+    color: #2ac845;
   }
-  .mui-grid-view.mui-grid-9 .mui-table-view-cell {
-    border: none;
+  .normal {
+    position: relative;
+    top: 28px;
+    left: 56px;
+    font-size: 10px;
+    color: #ff5053;
   }
+
 </style>

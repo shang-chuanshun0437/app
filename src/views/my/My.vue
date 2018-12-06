@@ -5,17 +5,43 @@
         <li class="title">
           我的
         </li>
-        <li class="setting">
-          <mt-button type="text" style="background-color: #2ac845">设置</mt-button>
+        <li class="setting" @click="changeToSetting">
+          <mt-button type="default" style="background-color: #2ac845">设置</mt-button>
         </li>
       </ul>
-      <img :src="user.src" class="img"/>
+      <img :src="user.src" class="img" @click="changeToLogin"/>
       <ul class="ul">
-        <li class="username">
-          {{user.username}}
+        <li class="username" @click="changeToLogin">
+          {{user.userName}}
         </li>
-        <li class="account">
-          {{user.account}}
+        <li class="userPhone" @click="changeToLogin">
+          账号：{{user.userPhone}}
+        </li>
+      </ul>
+    </div>
+    <div class="nav">
+      <ul class="ul basic">
+        <li class="device" @click="device()">
+          <mt-cell title="设备管理" is-link>
+            <i slot="icon" class="icon iconfont el-icon-ali-my" ></i>
+          </mt-cell>
+        </li>
+        <li class="device">
+          <mt-cell title="租房合约" is-link>
+            <i slot="icon" class="icon iconfont el-icon-ali-my" ></i>
+          </mt-cell>
+        </li>
+      </ul>
+      <ul class="ul contact">
+        <li class="device">
+          <mt-cell title="帮助信息" is-link>
+            <i slot="icon" class="icon iconfont el-icon-ali-my" ></i>
+          </mt-cell>
+        </li>
+        <li class="device">
+          <mt-cell title="联系我们" is-link>
+            <i slot="icon" class="icon iconfont el-icon-ali-my" ></i>
+          </mt-cell>
         </li>
       </ul>
     </div>
@@ -23,38 +49,68 @@
 </template>
 
 <script>
-
-export default {
-  data(){
-    return{
-      user: {
-        src: 'http://img1.imgtn.bdimg.com/it/u=3198762613,766144830&fm=27&gp=0.jpg',
-        username: '未设置昵称',
-        account: "未登录",
-         setting: {
-          badge: 2,
-       }
-      }
-    }
-  },
-  methods:{
-    changeToSetting(){            //跳转到设置界面
-      if(this.user.name){
-        this.$router.push('/account/setting');
-      }else{
-        this.$router.push('/account/login');
+  import UserDB from "../../common/UserDB"
+  export default {
+    data(){
+      return{
+        user: {
+          src: '../../assets/logo.png',
+          userName: '未设置昵称',
+          userPhone: "未登录",
+          token:'',
+           setting: {
+            badge: 2,
+         }
+        }
       }
     },
-    changeToLogin(){            //跳转到登录界面
-      this.$router.push('/account/login');
-    }
-  },
-  computed:{
-  }
+    methods:{
+      changeToSetting(){            //跳转到设置界面
+        if (this.user.userPhone == '未登录'){
+          this.$router.push('/lock/login');
+        }else {
+          this.$router.push('/user/settings');
+          console.log('ssdddf')
+        }
+      },
+      changeToLogin(){       //跳转到登录界面
+        if (this.user.userPhone == '未登录'){
+          this.$router.push('/lock/login');
+        }else {
+          this.$router.push('/user/editUserInfo');
+          console.log('ssdddf')
+        }
+      },
+      device(){
+        if (this.user.userPhone == '未登录'){
+          this.$router.push('/lock/login');
+        }else {
+          this.$router.push({path:"/device/devices",query:{userPhone:this.user.userPhone,token:this.user.token}});
+        }
+      }
+    },
+    created() {
+      var userDB = new UserDB();
+      userDB.getAll().then((obj) => {
+        if (obj != null) {
+          this.user.userPhone = obj.userPhone;
+          this.user.userName = obj.userName;
+          this.user.token = obj.token;
+        }
+      })
+    },
+    computed: {
+    },
 }
 </script>
 
 <style scoped>
+  .wrapper{
+    position: relative;
+    background-color: #f2f4f7;
+    width: 100%;
+    height: 100%;
+  }
   .header{
     position: absolute;
     top: 0px;
@@ -65,7 +121,7 @@ export default {
   .title{
     position: absolute;
     top: 15px;
-    left: 24%;
+    left: 20%;
   }
   .setting{
     position: absolute;
@@ -80,7 +136,7 @@ export default {
   .img{
     position: absolute;
     top: 40px;
-    left: 18%;
+    left: 13%;
     width: 80px;
     height: 80px;
     border-radius:100px;
@@ -92,12 +148,25 @@ export default {
   .username{
     position: absolute;
     top: 55px;
-    left: 45%;
+    left: 40%;
   }
-  .account{
+  .userPhone{
     position: absolute;
     top: 90px;
-    left: 45%;
+    left: 40%;
   }
-
+  .basic{
+    position: absolute;
+    top: 140px;
+    width: 100%;
+  }
+  .device{
+    width: 100%;
+    height: auto;
+  }
+  .contact{
+    position: absolute;
+    top: 260px;
+    width: 100%;
+  }
 </style>

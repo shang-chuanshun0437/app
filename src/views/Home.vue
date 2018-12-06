@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
     <mt-header fixed title="fixed top"></mt-header>
     <swipe class="swipe">
       <mt-swipe :auto="4000">
@@ -62,7 +62,7 @@
       }
     },
     created() {
-
+      this.$store.dispatch("tabBar/hide",true);
     },
     components: {
       Swipe,
@@ -72,6 +72,12 @@
 </script>
 
 <style scoped>
+  .wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #f2f4f7;
+  }
   .swipe {
     width: 100%;
     height: 180px;

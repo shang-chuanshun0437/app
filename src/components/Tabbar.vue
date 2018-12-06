@@ -1,6 +1,6 @@
 <template>
   <div class="tab">
-    <mt-tabbar fixed>
+    <mt-tabbar v-show="show" fixed>
       <mt-tab-item id="首页" class="tabbar-item" @click.native="changeToMain">
         <i slot="icon" class="icon iconfont el-icon-ali-home" :style="maincolor"></i>
         首页
@@ -21,6 +21,8 @@
 <script>
   const iconColor = "color: #cdcdcd";
   const iconColorActive ="color: #000000";
+  import { mapState } from "vuex";
+
   export default {
     data(){
       return{
@@ -30,6 +32,9 @@
       }
     },
     computed: {
+      ...mapState("tabBar", {
+        show: state => state.show,
+      }),
     },
     methods:{
       changeToMain(){
@@ -60,7 +65,7 @@
     font-size: 25px;
   }
    .mint-tabbar{
-     height: 10%
+     height: 10%;
    }
   .mint-tab-item{
     vertical-align: center;

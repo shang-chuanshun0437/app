@@ -24,8 +24,7 @@
     }
     ,
     created (){
-      //当app.vue创建完成以后，自动加载Home.vue模块
-      // window.location='/#/Home';
+      this.$store.dispatch("version/save","2018.12.24");
     }
   }
 </script>
@@ -36,7 +35,12 @@
     background-color:white;
   }
   .routerview{
-    margin-top: 45px;
+    position: absolute;
+    overflow-x: hidden;
+    top: 0px;
+    left: 0px;
+    bottom: 10%;
+    right: 0px;
   }
 
 </style>

@@ -1,8 +1,26 @@
 <template>
-  <div>
-    <mt-header fixed :title="deviceName"></mt-header>
-    <img src="../../assets/logo.png" @click="openDoor()">
-    https://gitee.com/raintao/vue2_app
+  <div class="openDoor">
+    <mt-header :title="deviceName" class="title">
+      <mt-button icon="back" slot="left" @click="back()"></mt-button>
+    </mt-header>
+    <div style="width: 100%;">
+      <img src="../../assets/logo.png" class="img" @click="openIng()">
+    </div>
+    <div class="doorInfo">
+      <ul class="ul">
+        <li class="progress">开锁进展：{{progress}}</li>
+        <li class="electric">设备电量：{{electric}}</li>
+      </ul>
+    </div>
+    <div class="explain">
+      <ul class="ul">
+        <li class="version">门锁版本号：{{version}}</li>
+        <li class="expiryDate">钥匙有效期：
+          <span v-if="expiryDate == 0">永久有效（管理员）</span>
+          <span v-if="expiryDate != 0">{{expiryDate}}</span>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -12,52 +30,95 @@
       return {
         deviceName:"未知设备",
         deviceNum:"99999999999",
+        bluetoothMac: "",
+        version: "",
+        expiryDate: "",
+        progress: "点击上面的图标，即可进行开锁",
+        electric: "100%",
       }
     },
     methods:{
       refresh(){
       },
-      openDoor(){
+      back(){
+        this.$router.go(-1);
+      },
+      openIng(){
         console.log('openDoor');
-
       },
     },
     created() {
       this.deviceName = this.$route.query.deviceName;
       this.deviceNum = this.$route.query.deviceNum;
+      this.bluetoothMac = this.$route.query.bluetoothMac;
+      this.version = this.$route.query.version;
+      this.expiryDate = this.$route.query.expiryDate;
+      console.log(this.bluetoothMac);
     },
-    components: {
-    }
   }
 </script>
 
 <style scoped>
-  .slide1 a,
-  .slide1 img {
-    display: block;
+  .openDoor{
+    position: relative;
     width: 100%;
-    height: 250px;
+    height: 100%;
   }
-  .mui-icon {
-    width: 50px;
-    height: 50px;
+  .title{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    background-color: #ff5053;
+    font-size: 18px;
   }
-  .mui-icon-home {
-    background-image: url(../../assets/logo.png);
-    background-repeat:round;
+  .img{
+    position: absolute;
+    top: 100px;
+    width: 80px;
+    height: 80px;
+    left: 35%;
   }
-  .mui-icon-home:before,
-  .mui-icon-email:before,
-  .mui-icon-chatbubble:before,
-  .mui-icon-location:before,
-  .mui-icon-search:before,
-  .mui-icon-phone:before {
-    content: '';
+  .doorInfo{
+    position: absolute;
+    top: 220px;
+    width: 100%;
   }
-  .mui-grid-view.mui-grid-9 {
-    background-color: white;
+  .ul{
+    list-style-type: none;
+    padding: 0;
   }
-  .mui-grid-view.mui-grid-9 .mui-table-view-cell {
-    border: none;
+  .progress{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+  }
+  .electric{
+    position: absolute;
+    top: 70px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+  }
+  .explain{
+    position: absolute;
+    top: 80%;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+  }
+  .version{
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+  }
+  .expiryDate{
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
   }
 </style>
