@@ -47,7 +47,6 @@
       },
     methods:{
       back(){
-        this.$store.dispatch("tabBar/hide",true);
         this.$router.go(-1);
       },
       refresh(){
@@ -66,7 +65,6 @@
       },
     },
     created() {
-      this.$store.dispatch("tabBar/hide",false);
       this.refresh();
     },
     computed: {

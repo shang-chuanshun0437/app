@@ -20,6 +20,7 @@ import DeviceDetail from '../views/device/DeviceDetail'
 import DeviceUsers from '../views/device/DeviceUsers'
 import BindDevice4User from '../views/device/BindDevice4User'
 import BindDevice from '../views/device/BindDevice'
+import OpenDoorHistory from '../views/door/OpenDoorHistory'
 
 Vue.use(Router)
 
@@ -46,5 +47,6 @@ export default new Router({
     { path: '/device/deviceUsers', name: 'deviceUsers', component: DeviceUsers },
     { path: '/device/bindDevice4User', name: 'bindDevice4User', component: BindDevice4User },
     { path: '/device/bindDevice', name: 'bindDevice', component: BindDevice },
+    { path: '/device/OpenDoorHistory', name: 'openDoorHistory', component: OpenDoorHistory },
   ]
 })

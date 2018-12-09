@@ -4,14 +4,12 @@
       <transition name="fade" mode="out-in">
         <router-view></router-view>
       </transition>
-      <Tabbar></Tabbar>
+
     </div>
   </div>
 </template>
 
 <script>
-  import Tabbar from "./components/Tabbar"
-
   export default {
     name: 'app',
     data () {
@@ -20,7 +18,7 @@
       }
     },
     components:{
-      Tabbar
+
     }
     ,
     created (){
@@ -39,7 +37,7 @@
     overflow-x: hidden;
     top: 0px;
     left: 0px;
-    bottom: 10%;
+    bottom: 0px;
     right: 0px;
   }
 

@@ -50,11 +50,13 @@
       </li>
 
     </ul>
+    <Tabbar></Tabbar>
   </div>
 </template>
 
 <script>
   import {Swipe,SwipeItem} from 'mint-ui';
+  import Tabbar from '../components/Tabbar'
   export default {
     data() {
       return {
@@ -62,11 +64,12 @@
       }
     },
     created() {
-      this.$store.dispatch("tabBar/hide",true);
+
     },
     components: {
       Swipe,
-      SwipeItem
+      SwipeItem,
+      Tabbar
     }
   }
 </script>

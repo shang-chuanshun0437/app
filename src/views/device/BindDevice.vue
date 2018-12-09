@@ -34,7 +34,6 @@
     },
     methods:{
       back(){
-        this.$store.dispatch("tabBar/hide",true);
         this.$router.go(-1);
       },
       addDevice(){

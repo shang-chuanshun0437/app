@@ -43,10 +43,8 @@
     },
     methods:{
       refresh(){
-        this.$store.dispatch("tabBar/hide",false);
       },
       back(){
-        this.$store.dispatch("tabBar/hide",true);
         this.$router.go(-1);
       },
       login(){

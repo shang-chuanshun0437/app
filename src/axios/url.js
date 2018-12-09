@@ -32,6 +32,9 @@ export const DEVICE_UNBIND4USER_URL = "/user/device/unbindDevice4User"; //设备
 export const DEVICE_UPDATE_DATE_URL = "/user/device/modify/user"; //设备管理员：修改有效期
 export const DEVICE_ALL_LIST_URL = "/user/device/queryAllDeviceList"; //获取用户下的所有设备
 export const DEVICE_BIND_URL = "/user/device/bindDevice"; //绑定设备
+export const DEVICE_UNBIND_SELF_URL = "/user/device/unbindDevice"; //用户自己解绑自己的设备
 
 //开门历史记录
-export const OPEN_HISTORY = "/open/door/history/query/list"; //开门历史记录
+export const OPEN_HISTORY = "/open/door/history/user/query/list"; //开门历史记录
+export const ADD_HISTORY = "/open/door/history/user/add"; //添加开门记录
+

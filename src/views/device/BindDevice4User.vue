@@ -40,7 +40,6 @@
     },
     methods:{
       back(){
-        this.$store.dispatch("tabBar/hide",true);
         this.$router.go(-1);
       },
       selectExpiryDate(){
@@ -146,6 +145,8 @@
     width: 100%;
   }
   .confirmButton{
+    position: absolute;
+    top: 60px;
     width: 90%;
     left: 5%;
     font-size: 17px;

@@ -45,11 +45,13 @@
         </li>
       </ul>
     </div>
+    <Tabbar></Tabbar>
   </div>
 </template>
 
 <script>
   import UserDB from "../../common/UserDB"
+  import Tabbar from '../../components/Tabbar'
   export default {
     data(){
       return{
@@ -63,6 +65,9 @@
          }
         }
       }
+    },
+    components: {
+      Tabbar
     },
     methods:{
       changeToSetting(){            //跳转到设置界面

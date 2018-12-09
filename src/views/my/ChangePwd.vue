@@ -40,7 +40,6 @@
     },
     methods:{
       refresh(){
-        this.$store.dispatch("tabBar/hide",true);
         var userDB = new UserDB();
         userDB.getAll().then((obj) => {
           if (obj != null) {
@@ -51,7 +50,6 @@
         })
       },
       back(){
-        this.$store.dispatch("tabBar/hide",true);
         this.$router.go(-1);
       },
       confirm(){

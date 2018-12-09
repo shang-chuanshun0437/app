@@ -39,7 +39,6 @@
     },
     methods:{
       refresh(){
-        this.$store.dispatch("tabBar/hide",false);
         this.phoneNum = this.$route.query.phoneNum;
         this.verificationCode = this.$route.query.verificationCode;
         console.log(this.phoneNum);

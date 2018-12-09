@@ -27,6 +27,7 @@
         doors:[],
         userPhone:"",
         token: "",
+        userName:""
       }
     },
     methods:{
@@ -48,14 +49,14 @@
           });
       },
       open(door){
-        this.$router.push({path:"/openDoor",query:{deviceName:door.deviceName,deviceNum:door.deviceNum,bluetoothMac: door.bluetoothMac
+        this.$router.push({path:"/openDoor",query:{userPhone: this.userPhone,token: this.token,userName: this.userName,
+            deviceName:door.deviceName,deviceNum:door.deviceNum,bluetoothMac: door.bluetoothMac
         ,expiryDate: door.expiryDate, version: door.version}});
       },
       back(){
         this.$router.go(-1);
       },
       addDevice(){
-        console.log("addDevice");
         this.$router.push({path:"/device/bindDevice",query:{userPhone:this.userPhone,token: this.token}});
       },
     },
@@ -65,6 +66,7 @@
         if (obj != null) {
           this.userPhone = obj.userPhone;
           this.token = obj.token;
+          this.userName = obj.userName;
           this.refresh();
         }
       })
