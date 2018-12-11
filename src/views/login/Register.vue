@@ -1,8 +1,10 @@
 <template>
-  <div style="width: 100%;height: 100%">
-    <mt-header title="欢迎注册" class="title">
-      <mt-button icon="back" slot="left" @click="back"></mt-button>
-    </mt-header>
+  <div class="registerWrapper">
+    <div class="title">
+      <img src="../../assets/back_black.png" class="backImg" @click="back">
+      <span class="titleName">欢迎注册</span>
+    </div>
+    <div class="divideTitle" style="width: 100%;height: 2px;background-color: #EBEBEB"></div>
     <div class="register">
       <div class="country">
         <label >手机号归属地</label>
@@ -87,34 +89,57 @@
 </script>
 
 <style scoped>
+  .registerWrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+  }
   .title{
     position: absolute;
     top: 0px;
     width: 100%;
-    background-color: #ff5053;
+    height: 40px;
+    background-color: #FFFFFF;
     font-size: 18px;
+  }
+  .titleName{
+    position: relative;
+    left: 10%;
+    top: -3px;
+  }
+  .backImg{
+    position: relative;
+    left: 10px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+  }
+  .divideTitle{
+    position: absolute;
+    top: 40px;
   }
   .register{
     position: absolute;
     width: 80%;
-    top: 280px;
     left: 10%;
   }
   .country{
+    position: relative;
+    top: 50px;
     font-size: 17px;
-    margin: 0.3rem;
     border-bottom: 1px solid #000000;
     height: 35px;
     width: 100%;
   }
   .china{
-    position: absolute;
-    right: 20px;
+    position: relative;
+    left: 40%;
     font-size: 15px;
     color: #2ac845;
   }
   .phoneNum{
-    position: absolute;
+    position: relative;
     top: 60px;
     font-size: 17px;
     margin: 0.3rem;
@@ -123,13 +148,14 @@
     width: 100%;
   }
   .phoneNumInput{
-    position: absolute;
+    position: relative;
     top: -4px;
     left: 50px;
     border: 0;
     width: 180px;
     height: 30px;
     font-size: 17px;
+    background-color: white;
   }
   .next{
     position: relative;

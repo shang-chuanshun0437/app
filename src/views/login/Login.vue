@@ -1,9 +1,11 @@
 <template>
-  <div style="width: 100%;height: 100%">
-    <mt-header title="欢迎登陆" class="title">
-      <mt-button icon="back" slot="left" @click="back"></mt-button>
-    </mt-header>
-    <img src="../../assets/logo.png" class="img">
+  <div class="loginWrapper">
+    <div class="title">
+      <img src="../../assets/back_black.png" class="backImg" @click="back">
+      <span class="titleName">欢迎登陆</span>
+    </div>
+    <div class="divide" style="width: 100%;height: 2px;background-color: #EBEBEB"></div>
+    <img src="../../assets/icon.png" class="img">
     <div class="login">
       <div class="username">
         <label >账号:</label>
@@ -63,7 +65,7 @@
             }
           })
           .catch(err => {
-            console.log(err);
+            this.$toast(err);
           });
       },
       register(){
@@ -87,16 +89,39 @@
 </script>
 
 <style scoped>
+  .loginWrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+  }
   .title{
     position: absolute;
     top: 0px;
     width: 100%;
-    background-color: #ff5053;
+    height: 40px;
+    background-color: #FFFFFF;
     font-size: 18px;
+  }
+  .titleName{
+    position: relative;
+    left: 30%;
+    top: -3px;
+  }
+  .backImg{
+    position: relative;
+    left: 10px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+  }
+  .divide{
+    position: absolute;
+    top: 40px;
   }
   .img{
     position: absolute;
-    top: 120px;
+    top: 80px;
     width: 100px;
     height: 100px;
     left: 38%;
@@ -104,7 +129,7 @@
   .login{
     position: absolute;
     width: 80%;
-    top: 280px;
+    top: 220px;
     left: 10%;
   }
   .username{
@@ -122,6 +147,7 @@
     width: 180px;
     height: 30px;
     font-size: 16px;
+    background-color: white;
   }
   .password{
     position: absolute;
@@ -140,10 +166,11 @@
     width: 180px;
     height: 30px;
     font-size: 16px;
+    background-color: white;
   }
   .confirm{
     position: relative;
-    top: 400px;
+    top: 360px;
     width: 100%;
   }
   .confirmButton{

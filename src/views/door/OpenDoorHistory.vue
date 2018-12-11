@@ -1,8 +1,10 @@
 <template>
   <div class="doors">
-    <mt-header title="历史记录" class="title">
-      <mt-button icon="back" slot="left" @click="back"></mt-button>
-    </mt-header>
+    <div class="title">
+      <img src="../../assets/back_black.png" class="backImg" @click="back">
+      <span class="titleName">历史记录</span>
+    </div>
+    <div class="divideTitle" style="width: 100%;height: 2px;background-color: #EBEBEB"></div>
     <div class="door" v-infinite-scroll="loadMore" infinite-scroll-disabled="moreLoading"
          infinite-scroll-distance="0" infinite-scroll-immediate-check="false">
       <!--ul里面几个scoller就是无限滚动的几个api-->
@@ -116,14 +118,31 @@
     position: absolute;
     top: 0px;
     width: 100%;
-    background-color: #ff5053;
+    height: 40px;
+    background-color: #FFFFFF;
     font-size: 18px;
+  }
+  .titleName{
+    position: relative;
+    left: 35%;
+    top: -3px;
+  }
+  .backImg{
+    position: relative;
+    left: 10px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+  }
+  .divideTitle{
+    position: absolute;
+    top: 40px;
   }
  .door{
    position: absolute;
    width: 100%;
    overflow-y: visible;
-   top: 35px;
+   top: 45px;
  }
   .items{
     position: relative;
@@ -139,7 +158,8 @@
   }
   .li{
     width: 100%;
-    margin-top: 10px;
+    top: 5px;
+    margin: 0px 0px 5px 0px;
     left: 0px;
     text-align: center;
   }

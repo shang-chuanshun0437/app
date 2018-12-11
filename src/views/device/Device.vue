@@ -1,8 +1,12 @@
 <template>
   <div class="devices">
-    <mt-header title="设备管理" class="title">
-      <mt-button icon="back" slot="left" @click="back"></mt-button>
-    </mt-header>
+    <div class="title">
+      <img src="../../assets/back_black.png" class="backImg" @click="back">
+      <span class="titleName">设备管理</span>
+      <span class="titleAdd" @click="addDevice()">添加设备</span>
+    </div>
+    <div class="divide" style="width: 100%;height: 2px;background-color: #EBEBEB"></div>
+
     <ul class="ul info">
       <li v-for="manageDevice in manageDevices" :key="manageDevice.deviceNum" class="item" @click="deviceDetail(manageDevice.deviceNum)">
         <div class="imgDiv">
@@ -44,6 +48,9 @@
     methods:{
       back(){
         this.$router.go(-1);
+      },
+      addDevice(){
+        this.$router.push({path:"/device/bindDevice",query:{userPhone:this.userPhone,token: this.token}});
       },
       refresh(){
         //查询管理的设备
@@ -88,8 +95,32 @@
     position: absolute;
     top: 0px;
     width: 100%;
-    background-color: #ff5053;
+    height: 40px;
+    background-color: #FFFFFF;
     font-size: 18px;
+  }
+  .titleName{
+    position: relative;
+    left: 10%;
+    top: -3px;
+  }
+  .backImg{
+    position: relative;
+    left: 10px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+  }
+  .divide{
+    position: absolute;
+    top: 40px;
+  }
+  .titleAdd{
+    position: absolute;
+    left: 75%;
+    top: 10px;
+    color: #2ac845;
+    font-size: 17px;
   }
   .info{
     position: absolute;

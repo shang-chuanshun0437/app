@@ -1,8 +1,10 @@
 <template style="width: 100px">
   <div class="wrapper">
-    <mt-header title="设置" class="title">
-      <mt-button icon="back" slot="left" @click="back"></mt-button>
-    </mt-header>
+    <div class="title">
+      <img src="../../assets/back_black.png" class="backImg" @click="back">
+      <span class="titleName">设置</span>
+    </div>
+    <div class="divide" style="width: 100%;height: 2px;background-color: #EBEBEB"></div>
     <div>
       <ul class="ul personal">
         <li class="changePwd" @click="changePwd()">
@@ -162,8 +164,25 @@
     position: absolute;
     top: 0px;
     width: 100%;
-    background-color: #ff5053;
+    height: 40px;
+    background-color: #FFFFFF;
     font-size: 18px;
+  }
+  .titleName{
+    position: relative;
+    left: 30%;
+    top: -3px;
+  }
+  .backImg{
+    position: relative;
+    left: 10px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+  }
+  .divide{
+    position: absolute;
+    top: 40px;
   }
   .ul{
     position: absolute;

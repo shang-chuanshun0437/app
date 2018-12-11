@@ -1,13 +1,15 @@
 <template>
-  <div style="width: 100%;height: 100%">
-    <mt-header title="更换账号" class="title">
-      <mt-button icon="back" slot="left" @click="back"></mt-button>
-    </mt-header>
+  <div class="changAccount">
+    <div class="title">
+      <img src="../../assets/back_black.png" class="backImg" @click="back">
+      <span class="titleName">更换账号</span>
+    </div>
+    <div class="divideTitle" style="width: 100%;height: 2px;background-color: #EBEBEB"></div>
     <div class="login">
       <div class="userPhone">
         <input type="text" v-model="newUserPhone" class="userPhoneInput" placeholder="请输入新手机号">
         <div class="divide" style="width: 1px; height: 35px; background-color: black;"></div>
-        <el-button type="text" class="getCodeBtn" :disabled="disabled" @click.native.prevent="sendMsg">{{btnCode}}</el-button>
+        <mt-button type="default" :disabled="disabled" class="getCodeBtn" @click="sendMsg">{{btnCode}}</mt-button>
       </div>
       <div class="verify">
         <input type="password" v-model="verificationCode" class="verifyInput" placeholder="请确认输入验证码">
@@ -137,12 +139,35 @@
 </script>
 
 <style scoped>
+  .changAccount{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+  }
   .title{
     position: absolute;
     top: 0px;
     width: 100%;
-    background-color: #ff5053;
+    height: 40px;
+    background-color: #FFFFFF;
     font-size: 18px;
+  }
+  .titleName{
+    position: relative;
+    left: 30%;
+    top: -3px;
+  }
+  .backImg{
+    position: relative;
+    left: 10px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+  }
+  .divideTitle{
+    position: relative;
+    top: 40px;
   }
   .login{
     position: absolute;
@@ -160,17 +185,22 @@
     left: -10px;
     top: 4px;
     border: 0;
-    width: 180px;
+    width: 140px;
     height: 30px;
     font-size: 16px;
+    background-color: white;
   }
   .divide{
     position: absolute;
-    left: 55%;
+    left: 145px;
   }
   .getCodeBtn{
     position: absolute;
-    left: 60%;
+    top: 5px;
+    left: 55%;
+    height: 20px;
+    background-color: white;
+    font-size: 16px;
   }
   .verify{
     position: absolute;
@@ -187,6 +217,7 @@
     width: 180px;
     height: 30px;
     font-size: 16px;
+    background-color: white;
   }
   .password{
     position: absolute;
@@ -203,6 +234,7 @@
     width: 180px;
     height: 30px;
     font-size: 16px;
+    background-color: white;
   }
   .confirmButton{
     position: absolute;

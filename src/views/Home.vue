@@ -1,18 +1,25 @@
 <template>
   <div class="wrapper">
-    <mt-header fixed title="fixed top"></mt-header>
+    <div class="title">
+      <span class="titleName">大管家</span>
+    </div>
     <swipe class="swipe">
       <mt-swipe :auto="4000">
-        <mt-swipe-item>1</mt-swipe-item>
-        <mt-swipe-item>2</mt-swipe-item>
-        <mt-swipe-item>3</mt-swipe-item>
+        <mt-swipe-item>
+          <img src="../assets/swipe1.jpg" class="img">
+        </mt-swipe-item>
+        <mt-swipe-item>
+          <img src="../assets/swipe2.jpg" class="img">
+        </mt-swipe-item>
+        <mt-swipe-item>
+          <img src="../assets/swipe3.jpg" class="img">
+        </mt-swipe-item>
       </mt-swipe>
     </swipe>
 
-    <!--描述：九宫格区域-->
-    <ul class="mui-table-view mui-grid-view mui-grid-9">
+    <ul class="mui-table-view mui-grid-view grid">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <router-link to="/doors">
+        <router-link to="/lock/doors">
 					<span class="mui-icon mui-icon-home"></span>
           <div class="mui-media-body">芝麻开门</div>
         </router-link>
@@ -41,35 +48,47 @@
           <div class="mui-media-body">生活服务</div>
         </router-link>
       </li>
-
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <router-link to="/search">
           <span class="mui-icon mui-icon-search"></span>
           <div class="mui-media-body">社区服务</div>
         </router-link>
       </li>
-
     </ul>
+    <div class="others">
+      <ul class="ul">
+        <li>
+          <div class="divide" style="width: 3px; height: 20px; background-color: black;"></div>
+          <span class="newShare">最新分享</span>
+          <div class="divide2" style="width: 100%; height: 2px; background-color: #f2f4f7;"></div>
+          <img src="../assets/smversion.png" class="house">
+        </li>
+      </ul>
+    </div>
     <Tabbar></Tabbar>
   </div>
 </template>
 
 <script>
   import {Swipe,SwipeItem} from 'mint-ui';
-  import Tabbar from '../components/Tabbar'
+
   export default {
     data() {
       return {
 
       }
     },
+
     created() {
 
     },
     components: {
       Swipe,
       SwipeItem,
-      Tabbar
+    },
+    methods:{
+      refresh() {
+      },
     }
   }
 </script>
@@ -78,33 +97,42 @@
   .wrapper {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 130%;
+    overflow-y: scroll;
     background-color: #f2f4f7;
   }
-  .swipe {
+  .title{
+    position: absolute;
+    top: 0px;
     width: 100%;
-    height: 180px;
-    color: #fff;
-    font-size: 30px;
+    height: 40px;
+    background-color: #FFFFFF;
+    font-size: 22px;
+  }
+  .titleName{
+    position: absolute;
+    width: 100%;
     text-align: center;
+    top: 5px;
   }
-  .slide1 a,
-  .slide1 img {
-    display: block;
+  .swipe{
+    position: absolute;
+    top: 30px;
     width: 100%;
-    height: 250px;
+    height: 140px;
   }
-  .mint-swipe-indicator {
-    opacity: 1;
-    background: rgba(239, 239, 239, 0.8);
+  .img {
+    width: 100%;
+    height: 140px;
   }
-  .mint-swipe-indicator.is-active {
-    opacity: 1;
-    background: rgba(250, 250, 10, 0.8)
+  .grid{
+    position: absolute;
+    top: 170px;
   }
+
   .mui-icon {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
   .mui-icon-home {
     background-image: url(../../static/images/menu3.png);
@@ -146,5 +174,34 @@
   }
   .mui-grid-view.mui-grid-9 .mui-table-view-cell {
     border: none;
+  }
+  .others{
+    position: absolute;
+    top: 320px;
+    width: 100%;
+  }
+  .ul{
+    padding: 0px;
+    list-style-type: none;
+    background-color: white;
+    width: 100%;
+  }
+  .divide{
+    position: relative;
+    top: 10px;
+    left: 15px;
+  }
+  .newShare{
+    position: relative;
+    top: -10px;
+    left: 30px;
+  }
+  .divide2{
+    position: relative;
+  }
+  .house{
+    position: relative;
+    width: 100%;
+    top: 10px;
   }
 </style>

@@ -21,6 +21,7 @@ import DeviceUsers from '../views/device/DeviceUsers'
 import BindDevice4User from '../views/device/BindDevice4User'
 import BindDevice from '../views/device/BindDevice'
 import OpenDoorHistory from '../views/door/OpenDoorHistory'
+import Select from '../views/select/Select'
 
 Vue.use(Router)
 
@@ -28,9 +29,9 @@ export default new Router({
   routes: [
     { path: '/', redirect: '/home'},
     { path: '/home',name: 'home',component: Home },
-    { path: '/doors',name: 'doors',component: Doors },
-    { path: '/openDoor', name: 'openDoor',component: OpenDoor },
-    { path: '/lock/my',name: 'my',component: My },
+    { path: '/lock/doors',name: 'doors',component: Doors },
+    { path: '/lock/openDoor', name: 'openDoor',component: OpenDoor },
+    { path: '/my',name: 'my',component: My },
     { path: '/lock/login',name: 'login',component: Login },
     { path: '/lock/register', name: 'register', component: Register },
     { path: '/lock/verifyCode', name: 'verifyCode', component: VerifyCode },
@@ -48,5 +49,6 @@ export default new Router({
     { path: '/device/bindDevice4User', name: 'bindDevice4User', component: BindDevice4User },
     { path: '/device/bindDevice', name: 'bindDevice', component: BindDevice },
     { path: '/device/OpenDoorHistory', name: 'openDoorHistory', component: OpenDoorHistory },
+    { path: '/select', name: 'select', component: Select },
   ]
 })

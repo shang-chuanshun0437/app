@@ -1,12 +1,12 @@
 <template>
   <div class="tab">
-    <mt-tabbar  fixed>
+    <mt-tabbar v-show="isShowTabbar" fixed>
       <mt-tab-item id="首页" class="tabbar-item" @click.native="changeToMain">
         <i slot="icon" class="icon iconfont el-icon-ali-home" :style="maincolor"></i>
         首页
       </mt-tab-item>
       <mt-tab-item id="精选" class="tabbar-item" @click.native="changeToSelect">
-        <i slot="icon" class="icon iconfont el-icon-ali-jingxuanchanpinku" :style="classifycolor"></i>
+        <i slot="icon" class="icon iconfont el-icon-ali-jingxuanchanpinku" :style="selectcolor"></i>
         精选
       </mt-tab-item>
       <mt-tab-item id="我的" class="tabbar-item" @click.native="changeToMy">
@@ -25,31 +25,36 @@
     data(){
       return{
         maincolor: iconColorActive,
-        classifycolor: iconColor,
+        selectcolor: iconColor,
         mycolor: iconColor,
       }
     },
     computed: {
+      isShowTabbar () {
+        let routeLength = this.$route.path.split('/').length;
+        // let home = this.$route.path.split('/')[1];
 
+        return routeLength > 2  ? false : true;
+      }
     },
     methods:{
       changeToMain(){
-        this.$router.push({path:'/home'});
         this.maincolor = iconColorActive;
-        this.classifycolor = iconColor;
+        this.selectcolor = iconColor;
         this.mycolor = iconColor;
+        this.$router.push({path:'/home'});
       },
       changeToSelect(){
-        this.$router.push({path:'/lock/classify'});
         this.maincolor = iconColor;
-        this.classifycolor = iconColorActive;
+        this.selectcolor = iconColorActive;
         this.mycolor = iconColor;
+        this.$router.push({path:'/select'});
       },
       changeToMy(){
-        this.$router.push({path:'/lock/my'});
         this.maincolor = iconColor;
-        this.classifycolor = iconColor;
+        this.selectcolor = iconColor;
         this.mycolor = iconColorActive;
+        this.$router.push({path:'/my'});
       },
     }
   }

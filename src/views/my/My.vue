@@ -1,51 +1,48 @@
 <template>
-  <div class="wrapper">
-    <div class="header">
-      <ul class="ul">
-        <li class="title">
-          我的
-        </li>
-        <li class="setting" @click="changeToSetting">
-          <mt-button type="default" style="background-color: #2ac845">设置</mt-button>
-        </li>
-      </ul>
-      <img :src="user.src" class="img" @click="changeToLogin"/>
-      <ul class="ul">
-        <li class="username" @click="changeToLogin">
-          {{user.userName}}
-        </li>
-        <li class="userPhone" @click="changeToLogin">
-          账号：{{user.userPhone}}
-        </li>
-      </ul>
+  <div class="me">
+    <div class="title">
+      <span class="titleName">我的</span>
+      <img src="../../assets/back_black.png" class="backImg" @click="changeToSetting">
     </div>
-    <div class="nav">
-      <ul class="ul basic">
-        <li class="device" @click="device()">
-          <mt-cell title="设备管理" is-link>
-            <i slot="icon" class="icon iconfont el-icon-ali-my" ></i>
-          </mt-cell>
-        </li>
-        <li class="device">
-          <mt-cell title="租房合约" is-link>
-            <i slot="icon" class="icon iconfont el-icon-ali-my" ></i>
-          </mt-cell>
-        </li>
-      </ul>
-      <ul class="ul contact">
-        <li class="device">
-          <mt-cell title="帮助信息" is-link>
-            <i slot="icon" class="icon iconfont el-icon-ali-my" ></i>
-          </mt-cell>
-        </li>
-        <li class="device">
-          <mt-cell title="联系我们" is-link>
-            <i slot="icon" class="icon iconfont el-icon-ali-my" ></i>
-          </mt-cell>
-        </li>
-      </ul>
+    <div class="wrapper">
+      <div class="header">
+        <img src="../../assets/xiaoxiong.jpg" class="img" @click="changeToLogin"/>
+        <ul class="ul">
+          <li class="username" @click="changeToLogin">
+            {{user.userName}}
+          </li>
+          <li class="userPhone" @click="changeToLogin">
+            账号：{{user.userPhone}}
+          </li>
+        </ul>
+      </div>
+      <div class="nav">
+        <ul class="ul basic">
+          <li class="device" @click="device()">
+            <mt-cell title="设备管理" is-link>
+              <i slot="icon" class="icon iconfont el-icon-ali-my" ></i>
+            </mt-cell>
+          </li>
+          <li class="device">
+            <mt-cell title="租房合约" is-link>
+              <i slot="icon" class="icon iconfont el-icon-ali-my" ></i>
+            </mt-cell>
+          </li>
+        </ul>
+        <ul class="ul contact">
+          <li class="device">
+            <mt-cell title="帮助信息" is-link>
+              <i slot="icon" class="icon iconfont el-icon-ali-my" ></i>
+            </mt-cell>
+          </li>
+          <li class="device">
+            <mt-cell title="联系我们" is-link>
+              <i slot="icon" class="icon iconfont el-icon-ali-my" ></i>
+            </mt-cell>
+          </li>
+        </ul>
+      </div>
     </div>
-    <Tabbar></Tabbar>
   </div>
 </template>
 
@@ -67,7 +64,6 @@
       }
     },
     components: {
-      Tabbar
     },
     methods:{
       changeToSetting(){            //跳转到设置界面
@@ -110,28 +106,42 @@
 </script>
 
 <style scoped>
-  .wrapper{
+  .me{
     position: relative;
-    background-color: #f2f4f7;
     width: 100%;
     height: 100%;
-  }
-  .header{
-    position: absolute;
-    top: 0px;
-    width: 100%;
-    height: 140px;
-    background-color: #2ac845;
+    background-color: #f2f4f7;
   }
   .title{
     position: absolute;
-    top: 15px;
-    left: 20%;
+    top: 0px;
+    width: 100%;
+    height: 40px;
+    background-color: #FFFFFF;
+    font-size: 18px;
   }
-  .setting{
+  .titleName{
+    position: relative;
+    left: 20%;
+    top: -3px;
+  }
+  .backImg{
+    position: relative;
+    left: 70%;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+  }
+  .wrapper{
     position: absolute;
-    top: 10px;
-    right: 50px;
+    background-color: #f2f4f7;
+    width: 100%;
+    top: 40px;
+  }
+  .header{
+    position: absolute;
+    width: 100%;
+    height: 100px;
     background-color: #2ac845;
   }
   .ul{
@@ -139,8 +149,8 @@
     list-style-type: none
   }
   .img{
-    position: absolute;
-    top: 40px;
+    position: relative;
+    top: 8px;
     left: 13%;
     width: 80px;
     height: 80px;
@@ -151,18 +161,18 @@
     margin-top: 0.21333rem
   }
   .username{
-    position: absolute;
-    top: 55px;
+    position: relative;
+    top: -78px;
     left: 40%;
   }
   .userPhone{
-    position: absolute;
-    top: 90px;
+    position: relative;
+    top: -70px;
     left: 40%;
   }
   .basic{
     position: absolute;
-    top: 140px;
+    top: 100px;
     width: 100%;
   }
   .device{
@@ -171,7 +181,7 @@
   }
   .contact{
     position: absolute;
-    top: 260px;
+    top: 220px;
     width: 100%;
   }
 </style>

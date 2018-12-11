@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <div>
-      <mt-header title="验证码" class="title">
-        <mt-button icon="back" slot="left" @click="back"></mt-button>
-      </mt-header>
-    </div>
+  <div class="verifyCodeTitle">
+      <div class="title">
+        <img src="../../assets/back_black.png" class="backImg" @click="back">
+        <span class="titleName">验证码</span>
+      </div>
+      <div class="divide" style="width: 100%;height: 2px;background-color: #EBEBEB"></div>
     <div>
       <span class="tip">
        短信验证码已发送至
@@ -15,16 +15,9 @@
       <span class="check">
         ，请查收
       </span>
-      <el-button type="text" class="getCodeBtn" :disabled="disabled" @click.native.prevent="sendMsg">{{btnCode}}</el-button>
-    </div>
-    <div class="verify-tel">
-      <div>
-        <input class="verifyCode" ref="pwd"  autofocus :maxlength="digits.length" v-model="msg"/>
-        <ul  class="pwd-wrap" @click="focusOn">
-          <li v-for="(item,key) in digits" :style="{'margin-right': (100-10*digits.length)/(digits.length-1)+'%','width':'10%'}" >
-            <span v-if="msgLength > key">{{msg.substring(key,key+1)}}</span>
-          </li>
-        </ul>
+      <mt-button type="default" :disabled="disabled" class="getCodeBtn" @click="sendMsg">{{btnCode}}</mt-button>
+      <div class="msgDiv">
+        <input type="text" v-model="msg" class="msg" placeholder="请输入验证码">
       </div>
     </div>
     <mt-button type="primary" class="confirmButton" :disabled="registerBtn" @click="next">下一步</mt-button>
@@ -39,18 +32,12 @@
       return {
         phoneNum:"",
         btnCode: "重新获取120s",
+        msg:"",
         disabled:false,
-        digits:['','','','','',''],  //input框位数控制,这里可以配置多少个“输入框”
-        msg:'',
-        msgLength:0,
         registerBtn:true
       }
     },
     methods:{
-      //使input框获得焦点
-      focusOn(){
-        this.$refs.pwd.focus();
-      },
       back(){
         this.$router.go(-1);
       },
@@ -103,38 +90,79 @@
           });
       },
     },
+    beforeUpdate(){
+      if (this.msg.length == 6){
+        this.registerBtn = false;
+      }else {
+        this.registerBtn = true;
+      }
+    },
     created() {
       this.phoneNum = this.$route.query.phoneNum;
       this.getCode(119)
-    },
-    watch: {
-      msg(curVal){
-        //监听输入的长度，如果输入完，自动调用校验接口函数
-        if(curVal.trim().length===this.digits.length){
-          this.registerBtn=false;
-        }
-        this.msgLength = curVal.length;
-      },
     },
   }
 </script>
 
 <style scoped>
-  html,body{
+  .verifyCodeTitle{
+    position: relative;
     width: 100%;
     height: 100%;
-    background: #fbf9fe;
+    background-color: white;
   }
   .title{
     position: absolute;
-    width: 100%;
     top: 0px;
+    width: 100%;
+    height: 40px;
+    background-color: #FFFFFF;
+    font-size: 18px;
+  }
+  .titleName{
+    position: relative;
+    left: 30%;
+    top: -3px;
+  }
+  .backImg{
+    position: relative;
+    left: 10px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+  }
+  .divide{
+    position: absolute;
+    top: 40px;
   }
   .tip{
     position: absolute;
     top: 60px;
     left:20px;
     font-size: 15px;
+  }
+  .getCodeBtn{
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    font-size: 15px;
+    background-color: white;
+  }
+  .msgDiv{
+    position: absolute;
+    top: 140px;
+    border-bottom: 1px solid #000000;
+    height: 35px;
+    width: 80%;
+    left: 10%;
+  }
+  .msg{
+    position: absolute;
+    border: 0;
+    width: 135px;
+    height: 30px;
+    font-size: 16px;
+    background-color: #FFFFFF;
   }
   .phoneNum{
     position: absolute;
@@ -148,65 +176,6 @@
     top: 60px;
     left: 260px;
     font-size: 15px;
-  }
-  .getCodeBtn{
-    position: absolute;
-    top: 80px;
-    left: 20px;
-    font-size: 15px;
-  }
-  .verify-tel {
-    position: absolute;
-    top: 110px;
-    background-color: #ffffff;
-    left: 10%;
-  }
-  .verifyCode{
-    width: 10%;
-    border: none;
-    z-index: -1;
-    opacity: 0;
-    border-bottom: 1px solid grey;
-    background-color: #f9f9f9;
-    text-align: center;
-    margin-right: 10%;
-    font-size: 25px;
-  }
-  .verifyCode:focus{
-     border-bottom: 1px solid deepskyblue;
-   }
-  verifyCode:last-of-type{
-     margin-right: 0 !important;
-   }
-  .pwd-wrap{
-    padding-left: 0;
-    width: 100%;
-    height: 35px;
-    padding-bottom: 1px;
-    margin: 0 auto;
-    display: flex;
-    display: -webkit-box;
-    display: -webkit-flex;
-    cursor: pointer;
-    border: none;
-    background-color: #f9f9f9;
-  }
-  .pwd-wrap li {
-    list-style-type: none;
-    text-align: center;
-    line-height: 44px;
-    -webkit-box-flex: 1;
-    flex: 1;
-    -webkit-flex: 1;
-    border: none;
-    border-bottom: 1px solid black;
-    background-color: #f9f9f9;
-  }
-  .pwd-wrap:last-of-type{
-     margin-right: 0 !important;
-   }
-  .pwd-wrap span{
-    font-size: 20px;
   }
   .confirmButton{
     position: absolute;

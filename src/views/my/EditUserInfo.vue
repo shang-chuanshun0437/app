@@ -1,9 +1,10 @@
 <template style="width: 100px">
   <div class="wrapper">
-    <mt-header title="个人信息" class="title">
-      <mt-button icon="back" slot="left" @click="back"></mt-button>
-    </mt-header>
-
+    <div class="title">
+      <img src="../../assets/back_black.png" class="backImg" @click="back">
+      <span class="titleName">个人信息</span>
+    </div>
+    <div class="divideTitle" style="width: 100%;height: 2px;background-color: #EBEBEB"></div>
     <div class="personalInfo">
       <div class="divide" style="width: 3px; height: 20px; background-color: black;"></div>
       <span class="info">个人资料</span>
@@ -123,8 +124,25 @@
     position: absolute;
     top: 0px;
     width: 100%;
-    background-color: #ff5053;
+    height: 40px;
+    background-color: #FFFFFF;
     font-size: 18px;
+  }
+  .titleName{
+    position: relative;
+    left: 30%;
+    top: -3px;
+  }
+  .backImg{
+    position: relative;
+    left: 10px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+  }
+  .divideTitle{
+    position: absolute;
+    top: 40px;
   }
   .personalInfo{
     position: absolute;

@@ -1,8 +1,10 @@
 <template>
   <div class="addDevice">
-    <mt-header title="添加设备" class="title">
-      <mt-button icon="back" slot="left" @click="back"></mt-button>
-    </mt-header>
+    <div class="title">
+      <img src="../../assets/back_black.png" class="backImg" @click="back">
+      <span class="titleName">添加设备</span>
+    </div>
+    <div class="divide" style="width: 100%;height: 2px;background-color: #EBEBEB"></div>
     <div class="login">
       <div class="phone">
         <label >设备编号:</label>
@@ -79,13 +81,31 @@
     position: relative;
     width: 100%;
     height: 100%;
+    background-color: white;
   }
   .title{
     position: absolute;
     top: 0px;
     width: 100%;
-    background-color: #ff5053;
+    height: 40px;
+    background-color: #FFFFFF;
     font-size: 18px;
+  }
+  .titleName{
+    position: relative;
+    left: 35%;
+    top: -3px;
+  }
+  .backImg{
+    position: relative;
+    left: 10px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+  }
+  .divide{
+    position: absolute;
+    top: 40px;
   }
   .login{
     position: absolute;
@@ -108,6 +128,7 @@
     width: 180px;
     height: 30px;
     font-size: 16px;
+    background-color: white;
   }
   .deviceName{
     position: absolute;
@@ -126,6 +147,7 @@
     width: 230px;
     height: 30px;
     font-size: 16px;
+    background-color: white;
   }
   .confirm{
     position: absolute;

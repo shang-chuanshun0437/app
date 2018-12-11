@@ -4,12 +4,13 @@
       <transition name="fade" mode="out-in">
         <router-view></router-view>
       </transition>
-
+      <Tabbar></Tabbar>
     </div>
   </div>
 </template>
 
 <script>
+  import Tabbar from './components/Tabbar'
   export default {
     name: 'app',
     data () {
@@ -18,9 +19,8 @@
       }
     },
     components:{
-
-    }
-    ,
+      Tabbar
+    },
     created (){
       this.$store.dispatch("version/save","2018.12.24");
     }
@@ -35,6 +35,7 @@
   .routerview{
     position: absolute;
     overflow-x: hidden;
+    overflow-y: scroll;
     top: 0px;
     left: 0px;
     bottom: 0px;

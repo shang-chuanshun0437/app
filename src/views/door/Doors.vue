@@ -1,9 +1,11 @@
 <template>
   <div class="doors">
-    <mt-header title="设备列表" class="title">
-      <mt-button icon="back" slot="left" @click="back"></mt-button>
-      <mt-button slot="right" @click="addDevice()">添加设备</mt-button>
-    </mt-header>
+    <div class="title">
+      <img src="../../assets/back_black.png" class="backImg" @click="back">
+      <span class="titleName">设备列表</span>
+      <span class="titleAdd" @click="addDevice()">添加设备</span>
+    </div>
+    <div class="divide" style="width: 100%;height: 2px;background-color: #EBEBEB"></div>
     <div class="door">
       <div v-for="door in doors" :key="door.deviceNum" class="doorsInfo" @click="open(door)">
         <img src="../../assets/logo.png" class="img">
@@ -49,7 +51,7 @@
           });
       },
       open(door){
-        this.$router.push({path:"/openDoor",query:{userPhone: this.userPhone,token: this.token,userName: this.userName,
+        this.$router.push({path:"/lock/openDoor",query:{userPhone: this.userPhone,token: this.token,userName: this.userName,
             deviceName:door.deviceName,deviceNum:door.deviceNum,bluetoothMac: door.bluetoothMac
         ,expiryDate: door.expiryDate, version: door.version}});
       },
@@ -85,13 +87,37 @@
     position: absolute;
     top: 0px;
     width: 100%;
-    background-color: #ff5053;
+    height: 40px;
+    background-color: #FFFFFF;
     font-size: 18px;
+  }
+  .titleName{
+    position: relative;
+    left: 10%;
+    top: -3px;
+  }
+  .backImg{
+    position: relative;
+    left: 10px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+  }
+  .divide{
+    position: absolute;
+    top: 40px;
+  }
+  .titleAdd{
+    position: absolute;
+    left: 75%;
+    top: 10px;
+    color: #2ac845;
+    font-size: 17px;
   }
  .door{
    position: absolute;
    width: 100%;
-   top: 60px;
+   top: 45px;
  }
   .doorsInfo{
     position: relative;

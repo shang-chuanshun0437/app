@@ -1,16 +1,11 @@
 <template>
   <div class="devices">
     <div class="title">
-      <mt-button icon="back"  @click="back"></mt-button>
-      <ul class="ul header">
-        <li class="titleName">
-          <span>{{deviceName}}</span>
-        </li>
-        <li class="addUser" @click="addUser()">
-          <span>添加用户</span>
-        </li>
-      </ul>
+      <img src="../../assets/back_black.png" class="backImg" @click="back">
+      <span class="titleName">{{deviceName}}</span>
+      <span class="titleAdd" @click="addUser()">添加用户</span>
     </div>
+    <div class="divideTitle" style="width: 100%;height: 2px;background-color: #EBEBEB"></div>
     <mt-datetime-picker ref="picker" type="date"
                         year-format="{value} 年" month-format="{value} 月" date-format="{value} 日"
                         @confirm="handleConfirm"></mt-datetime-picker>
@@ -151,20 +146,31 @@
     top: 0px;
     width: 100%;
     height: 40px;
-    background-color: #ff5053;
+    background-color: #FFFFFF;
     font-size: 18px;
   }
   .titleName{
-    position: absolute;
-    top: 15px;
-    left: 60px;
-    font-size: 18px;
+    position: relative;
+    left: 15%;
+    top: -3px;
   }
-  .addUser{
+  .backImg{
+    position: relative;
+    left: 10px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+  }
+  .divideTitle{
     position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 18px;
+    top: 40px;
+  }
+  .titleAdd{
+    position: absolute;
+    left: 75%;
+    top: 10px;
+    color: #2ac845;
+    font-size: 17px;
   }
   .ul{
     padding: 0;

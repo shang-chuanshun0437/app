@@ -1,11 +1,13 @@
 <template>
   <div class="openDoor">
-    <mt-header :title="deviceName" class="title">
-      <mt-button icon="back" slot="left" @click="back()"></mt-button>
-      <mt-button icon="more" slot="right" @click="more()"></mt-button>
-    </mt-header>
+    <div class="title">
+      <img src="../../assets/back_black.png" class="backImg" @click="back">
+      <span class="titleName">{{deviceName}}</span>
+      <span class="icon el-icon-ali-my moreImg" @click="more()" ></span>
+    </div>
+    <div class="divide" style="width: 100%;height: 2px;background-color: #EBEBEB"></div>
     <div style="width: 100%;">
-      <img src="../../assets/logo.png" class="img" @click="openIng()" id="openDoorImg">
+      <img src="../../assets/opendoor.png" class="img" @click="openIng()" id="openDoorImg">
     </div>
     <div class="doorInfo">
       <ul class="ul">
@@ -113,7 +115,7 @@
         }
         this.progress = "正在开门，请稍等.....";
         var deg = 0;
-        let time = 2;
+        let time = 100;
         let timer = setInterval(() => {
           if (time <= 0 || this.isOpenIng == false) {
             try{
@@ -151,7 +153,7 @@
             }
             time--;
           }
-        }, 200);
+        }, 50);
       }
     },
     created() {
@@ -177,19 +179,43 @@
     position: absolute;
     top: 0px;
     width: 100%;
-    background-color: #ff5053;
+    height: 40px;
+    background-color: #FFFFFF;
     font-size: 18px;
+  }
+  .titleName{
+    position: relative;
+    left: 10%;
+    top: -3px;
+  }
+  .backImg{
+    position: relative;
+    left: 10px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+  }
+  .divide{
+    position: absolute;
+    top: 40px;
+  }
+  .moreImg{
+    position: absolute;
+    left: 85%;
+    top: 10px;
+    width: 30px;
+    height: 30px;
   }
   .img{
     position: absolute;
     top: 100px;
-    width: 80px;
-    height: 80px;
-    left: 35%;
+    width: 160px;
+    height: 160px;
+    left: 30%;
   }
   .doorInfo{
     position: absolute;
-    top: 220px;
+    top: 260px;
     width: 100%;
   }
   .ul{

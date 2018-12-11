@@ -1,8 +1,10 @@
 <template>
-  <div style="width: 100%;height: 100%">
-    <mt-header title="设置密码" class="title">
-      <mt-button icon="back" slot="left" @click="back"></mt-button>
-    </mt-header>
+  <div class="registerPassword">
+    <div class="title">
+      <img src="../../assets/back_black.png" class="backImg" @click="back">
+      <span class="titleName">设置密码</span>
+    </div>
+    <div class="divideTitle" style="width: 100%;height: 2px;background-color: #EBEBEB"></div>
     <div class="login">
       <div class="password">
         <label >密码:</label>
@@ -85,12 +87,35 @@
 </script>
 
 <style scoped>
+  .registerPassword{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+  }
   .title{
     position: absolute;
     top: 0px;
     width: 100%;
-    background-color: #ff5053;
+    height: 40px;
+    background-color: #FFFFFF;
     font-size: 18px;
+  }
+  .titleName{
+    position: relative;
+    left: 10%;
+    top: -3px;
+  }
+  .backImg{
+    position: relative;
+    left: 10px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+  }
+  .divideTitle{
+    position: absolute;
+    top: 40px;
   }
 
   .login{
@@ -114,6 +139,7 @@
     width: 180px;
     height: 30px;
     font-size: 17px;
+    background-color: #FFFFFF;
   }
   .confirmPass{
     position: absolute;
@@ -132,6 +158,7 @@
     width: 180px;
     height: 30px;
     font-size: 17px;
+    background-color: #FFFFFF;
   }
   .userName{
     position: absolute;
@@ -150,6 +177,7 @@
     width: 180px;
     height: 30px;
     font-size: 17px;
+    background-color: #FFFFFF;
   }
   .registerButton{
     position: absolute;

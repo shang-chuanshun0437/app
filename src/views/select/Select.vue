@@ -2,7 +2,7 @@
   <div class="aboutUs">
     <div class="title">
       <img src="../../assets/back_black.png" class="backImg" @click="back">
-      <span class="titleName">关于我们</span>
+      <span class="titleName">精选</span>
     </div>
     <div class="divide" style="width: 100%;height: 2px;background-color: #EBEBEB"></div>
     <div class="wrapper">
@@ -41,7 +41,6 @@
   import { mapState } from "vuex";
   import * as API from "../../axios/api";
   import * as URL from "../../axios/url";
-
   export default {
     data(){
       return{
@@ -69,6 +68,8 @@
     },
     created() {
       this.refresh();
+    },
+    components: {
     },
     computed: {
       ...mapState("version", {
