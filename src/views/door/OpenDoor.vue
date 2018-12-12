@@ -3,7 +3,7 @@
     <div class="title">
       <img src="../../assets/back_black.png" class="backImg" @click="back">
       <span class="titleName">{{deviceName}}</span>
-      <span class="icon el-icon-ali-my moreImg" @click="more()" ></span>
+      <img src="../../assets/more.png" class="moreImg" @click="more()">
     </div>
     <div class="divide" style="width: 100%;height: 2px;background-color: #EBEBEB"></div>
     <div style="width: 100%;">
@@ -174,6 +174,7 @@
     position: relative;
     width: 100%;
     height: 100%;
+    background-color: white;
   }
   .title{
     position: absolute;
@@ -202,7 +203,7 @@
   .moreImg{
     position: absolute;
     left: 85%;
-    top: 10px;
+    top: 5px;
     width: 30px;
     height: 30px;
   }

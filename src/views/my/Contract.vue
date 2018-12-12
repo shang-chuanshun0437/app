@@ -1,7 +1,8 @@
 <template >
-  <div class="selectWrapper">
+  <div class="contractWrapper">
     <div class="title">
-      <span class="titleName">精选</span>
+      <img src="../../assets/back_black.png" class="backImg" @click="back">
+      <span class="titleName">租房合约</span>
     </div>
     <div class="divide" style="width: 100%;height: 2px;background-color: #EBEBEB"></div>
     <div>
@@ -18,9 +19,12 @@
     data(){
       return{
 
-        }
-      },
+      }
+    },
     methods:{
+      back(){
+        this.$router.go(-1);
+      },
     },
     created() {
     },
@@ -28,11 +32,11 @@
     },
     computed: {
     },
-}
+  }
 </script>
 
 <style scoped>
-  .selectWrapper{
+  .contractWrapper{
     position: relative;
     width: 100%;
     height: 100%;
@@ -47,10 +51,17 @@
     font-size: 20px;
   }
   .titleName{
-    position: absolute;
+    position: relative;
     width: 100%;
-    text-align: center;
-    top: 10px;
+    left: 30%;
+    top: -3px;
+  }
+  .backImg{
+    position: relative;
+    left: 10px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
   }
   .divide{
     position: absolute;

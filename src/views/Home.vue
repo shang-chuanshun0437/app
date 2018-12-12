@@ -20,37 +20,37 @@
     <ul class="mui-table-view mui-grid-view grid">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <router-link to="/lock/doors">
-					<span class="mui-icon mui-icon-home"></span>
+          <img src="../assets/zhimakaimen.png" class="kefuImg">
           <div class="mui-media-body">芝麻开门</div>
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <router-link to="/car">
-          <span class="mui-icon mui-icon-phone"></span>
+        <router-link to="/home/service">
+          <img src="../assets/kefu.png" class="kefuImg">
           <div class="mui-media-body">客服</div>
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <router-link to="/member">
-          <span class="mui-icon mui-icon-location"></span>
-          <div class="mui-media-body">智能锁</div>
+        <router-link to="/home/suggestion">
+          <img src="../assets/yijianfankui.png" class="kefuImg">
+          <div class="mui-media-body">意见反馈</div>
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <router-link to="/photolist">
-					<span class="mui-icon mui-icon-email"></span>
+        <router-link to="/home/renting">
+          <img src="../assets/zufang.png" class="kefuImg">
           <div class="mui-media-body">租房</div>
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <router-link to="/search">
-          <span class="mui-icon mui-icon-chatbubble"></span>
+        <router-link to="/home/live">
+          <img src="../assets/fuwu.png" class="kefuImg">
           <div class="mui-media-body">生活服务</div>
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <router-link to="/search">
-          <span class="mui-icon mui-icon-search"></span>
+        <router-link to="/home/community">
+          <img src="../assets/shequ.png" class="kefuImg">
           <div class="mui-media-body">社区服务</div>
         </router-link>
       </li>
@@ -65,7 +65,6 @@
         </li>
       </ul>
     </div>
-    <Tabbar></Tabbar>
   </div>
 </template>
 
@@ -120,6 +119,10 @@
     top: 30px;
     width: 100%;
     height: 140px;
+  }
+  .kefuImg{
+    width: 40px;
+    height: 40px;
   }
   .img {
     width: 100%;

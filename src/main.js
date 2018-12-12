@@ -10,7 +10,9 @@ import '../static/css/mui.css'
 import '../static/css/icons-extra.css'
 import '../static/css/muihead.css'
 import "./assets/icon/iconfont.css"
+import Mui from 'vue-awesome-mui';
 
+Vue.use(Mui);
 //引入axios
 import Axios from 'axios'
 //给vue挂载一个属性

@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 100%;height: 100%">
+  <div class="bind4User">
     <div class="title">
       <img src="../../assets/back_black.png" class="backImg" @click="back">
       <span class="titleName">添加用户</span>
@@ -94,6 +94,12 @@
 </script>
 
 <style scoped>
+  .bind4User{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+  }
   .title{
     position: absolute;
     top: 0px;

@@ -2,7 +2,7 @@
   <div class="me">
     <div class="title">
       <span class="titleName">我的</span>
-      <img src="../../assets/back_black.png" class="backImg" @click="changeToSetting">
+      <img src="../../assets/settings.png" class="backImg" @click="changeToSetting">
     </div>
     <div class="wrapper">
       <div class="header">
@@ -20,24 +20,24 @@
         <ul class="ul basic">
           <li class="device" @click="device()">
             <mt-cell title="设备管理" is-link>
-              <i slot="icon" class="icon iconfont el-icon-ali-my" ></i>
+              <i slot="icon" class="icon iconfont el-icon-ali-doorhandle" ></i>
             </mt-cell>
           </li>
-          <li class="device">
+          <li class="device" @click="contract()">
             <mt-cell title="租房合约" is-link>
-              <i slot="icon" class="icon iconfont el-icon-ali-my" ></i>
+              <i slot="icon" class="icon iconfont el-icon-ali-gaiicon-" ></i>
             </mt-cell>
           </li>
         </ul>
         <ul class="ul contact">
-          <li class="device">
+          <li class="device" @click="help()">
             <mt-cell title="帮助信息" is-link>
-              <i slot="icon" class="icon iconfont el-icon-ali-my" ></i>
+              <i slot="icon" class="icon iconfont el-icon-ali-bangzhu" ></i>
             </mt-cell>
           </li>
-          <li class="device">
+          <li class="device" @click="contact()">
             <mt-cell title="联系我们" is-link>
-              <i slot="icon" class="icon iconfont el-icon-ali-my" ></i>
+              <i slot="icon" class="icon iconfont el-icon-ali-jishuzhichizhichizhinengkefuzhinengfuwuzhinengzhichi" ></i>
             </mt-cell>
           </li>
         </ul>
@@ -88,7 +88,20 @@
         }else {
           this.$router.push({path:"/device/devices",query:{userPhone:this.user.userPhone,token:this.user.token}});
         }
-      }
+      },
+      contact(){
+        this.$router.push("/my/contactUs");
+      },
+      contract(){
+        if (this.user.userPhone == '未登录'){
+          this.$router.push('/lock/login');
+        }else {
+          this.$router.push("/my/contract");
+        }
+      },
+      help(){
+          this.$router.push("/my/help");
+      },
     },
     created() {
       var userDB = new UserDB();
@@ -123,14 +136,14 @@
   .titleName{
     position: relative;
     left: 20%;
-    top: -3px;
+    top: 5px;
   }
   .backImg{
     position: relative;
     left: 70%;
-    top: 5px;
-    width: 30px;
-    height: 30px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
   }
   .wrapper{
     position: absolute;
